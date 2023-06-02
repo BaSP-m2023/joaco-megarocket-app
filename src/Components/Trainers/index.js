@@ -216,11 +216,12 @@ function Trainers() {
 
   const showActive = (active) => {
     if (active) {
-      return 'active';
+      return 'Active';
     } else {
-      return 'inactive';
+      return 'Inactive';
     }
   };
+  console.log('hola');
 
   useEffect(() => {
     getTrainers();
