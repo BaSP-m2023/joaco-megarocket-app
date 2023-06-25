@@ -37,7 +37,7 @@ const FormActivities = () => {
       .regex(/^[a-zA-Z]+(?: [a-zA-Z]+)*$/)
       .required()
       .messages({
-        'string.pattern.base': 'Activity name must contain letters only',
+        'string.pattern.base': 'Activity name must contain letters only.',
         'string.min': 'Activity name can´t be shorter than 3 characters',
         'string.max': 'Activity  name can´t be longer than 15 characters',
         'string.empty': 'Activity name can´t be empty'
