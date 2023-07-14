@@ -1,0 +1,111 @@
+const NavBarAdmin = require('../pageobjects/menuAdminPage.js');
+const ActivitiesAdmin = require('../pageobjects/actAdminPage.js');
+const ClassesAdmin = require('../pageobjects/classAdminPage.js');
+
+
+describe('Check Login application for "Admins_User"', () => {
+
+
+    beforeAll('open browser', () => {
+        browser.setWindowSize(1900, 900);
+        browser.url('https://joaco-megarocket-app.vercel.app/admins');
+    });
+
+    it('Display elements for menu', async () => {
+        await expect(NavBarAdmin.activitiesButton).toBeDisplayed();
+        await expect(NavBarAdmin.activitiesButton).toBeClickable();
+        await expect(NavBarAdmin.classesButton).toBeDisplayed();
+        await expect(NavBarAdmin.classesButton).toBeClickable();
+        await expect(NavBarAdmin.membersButton).toBeDisplayed();
+        await expect(NavBarAdmin.membersButton).toBeClickable();
+        await expect(NavBarAdmin.subscriptionsButton).toBeDisplayed();
+        await expect(NavBarAdmin.subscriptionsButton).toBeClickable();
+        await expect(NavBarAdmin.trainersButton).toBeDisplayed();
+        await expect(NavBarAdmin.trainersButton).toBeClickable();
+    });
+    it('Activities flow', async () => {
+      await NavBarAdmin.activityClick();
+      await expect(ActivitiesAdmin.buttonCreateActivities).toBeDisplayed();
+      await expect(ActivitiesAdmin.buttonCreateActivities).toBeClickable();
+      await ActivitiesAdmin.createActClick();
+      await expect(ActivitiesAdmin.formActivities).toBeDisplayed();
+      await expect(ActivitiesAdmin.containerInputName).toBeDisplayed();
+      await expect(ActivitiesAdmin.containerInputDescription).toBeDisplayed();
+      await expect(ActivitiesAdmin.cancelButtonAct).toBeDisplayed();
+      await expect(ActivitiesAdmin.resetButtonAct).toBeDisplayed();
+      await expect(ActivitiesAdmin.addButtonAct).toBeDisplayed();
+      await ActivitiesAdmin.fillContainerInputName('Te');
+      await ActivitiesAdmin.fillContainerInputDescription('Test');
+      await ActivitiesAdmin.addActClick();
+      await expect(ActivitiesAdmin.errorMsgName).toBeDisplayed();
+      await expect(ActivitiesAdmin.errorMsgDescription).toBeDisplayed();
+      await ActivitiesAdmin.fillContainerInputName('Tests');
+      await ActivitiesAdmin.fillContainerInputDescription('TestTestTestTestTestTestTestTestTestTestTestTestTest');
+      await ActivitiesAdmin.addActClick();
+      await expect(ActivitiesAdmin.modalSuccess).toBeDisplayed();
+      await expect(ActivitiesAdmin.modalSuccessTitle).toBeDisplayed();
+      await expect(ActivitiesAdmin.acceptButtonAct).toBeDisplayed();
+      await ActivitiesAdmin.acceptActClick();
+      await expect(ActivitiesAdmin.editButtonAct).toBeDisplayed();
+      await ActivitiesAdmin.editActClick();
+      await expect(ActivitiesAdmin.formActivities).toBeDisplayed();
+      await expect(ActivitiesAdmin.containerInputName).toBeDisplayed();
+      await expect(ActivitiesAdmin.containerInputDescription).toBeDisplayed();
+      await ActivitiesAdmin.fillContainerInputDescription('TestingTestingTestingTestingTestingTestingTestingTesting');
+      await expect(ActivitiesAdmin.cancelButtonAct).toBeDisplayed();
+      await expect(ActivitiesAdmin.resetButtonAct).toBeDisplayed();
+      await expect(ActivitiesAdmin.saveButtonAct).toBeDisplayed();
+      await ActivitiesAdmin.saveActClick();
+      await expect(ActivitiesAdmin.modalSuccess).toBeDisplayed();
+      await expect(ActivitiesAdmin.modalSuccessTitle).toBeDisplayed();
+      await expect(ActivitiesAdmin.acceptButtonAct).toBeDisplayed();
+      await ActivitiesAdmin.acceptActClick();
+      await expect(ActivitiesAdmin.deleteButtonAct).toBeDisplayed();
+      await ActivitiesAdmin.deleteActClick();
+    });
+    // it('Classes flow', async () => {
+    //   await NavBarAdmin.classesClick();
+    //   await expect(ClassesAdmin.buttonCreateClasses).toBeDisplayed();
+    //   await expect(ClassesAdmin.buttonCreateClasses).toBeClickable();
+    //   await ClassesAdmin.createClassesClick();
+    //   await expect(ClassesAdmin.formClasses).toBeDisplayed();
+    //   await expect(ClassesAdmin.selectDay).toBeDisplayed();
+    //   await expect(ClassesAdmin.selectHour).toBeDisplayed();
+    //   await expect(ClassesAdmin.selectTrainer).toBeDisplayed();
+    //   await expect(ClassesAdmin.selectActivity).toBeDisplayed();
+    //   await expect(ClassesAdmin.selectSlots).toBeDisplayed();
+    //   await ClassesAdmin.selectionDayClass();
+    //   await ClassesAdmin.selectionHourClass();
+    //   await ClassesAdmin.selectionTrainerClass();
+    //   await ClassesAdmin.selectionActivityClass();
+    //   await ClassesAdmin.fillSlotsClass(5);
+    //   await expect(ClassesAdmin.addButtonClass).toBeDisplayed();
+    //   await expect(ClassesAdmin.addButtonClass).toBeClickable();
+    //   await ClassesAdmin.addClassClick();
+    //   await expect(ClassesAdmin.modalSuccess).toBeDisplayed();
+    //   await expect(ClassesAdmin.modalSuccessTitle).toBeDisplayed();
+    //   await expect(ClassesAdmin.modalSuccessTitle).toHaveTextContaining('Success!');
+    //   await expect(ClassesAdmin.acceptButtonClass).toBeDisplayed();
+    //   await ClassesAdmin.acceptClassClick();
+    //   await expect(ClassesAdmin.editButtonClass).toBeDisplayed();
+    //   await ClassesAdmin.editClassClick();
+    //   await expect(ClassesAdmin.formClasses).toBeDisplayed();
+    //   await expect(ClassesAdmin.selectDay).toBeDisplayed();
+    //   await expect(ClassesAdmin.selectHour).toBeDisplayed();
+    //   await expect(ClassesAdmin.selectTrainer).toBeDisplayed();
+    //   await expect(ClassesAdmin.selectActivity).toBeDisplayed();
+    //   await expect(ClassesAdmin.selectSlots).toBeDisplayed();
+    //   await ClassesAdmin.fillSlotsClass('6');
+    //   await expect(ClassesAdmin.cancelButtonClass).toBeDisplayed();
+    //   await expect(ClassesAdmin.resetButtonClass).toBeDisplayed();
+    //   await expect(ClassesAdmin.saveButtonClass).toBeDisplayed();
+    //   await ClassesAdmin.saveClassClick();
+    //   await expect(ClassesAdmin.modalSuccess).toBeDisplayed();
+    //   await expect(ClassesAdmin.modalSuccessTitle).toBeDisplayed();
+    //   await expect(ClassesAdmin.modalSuccessTitle).toHaveTextContaining('Success!');
+    //   await expect(ClassesAdmin.acceptButtonClass).toBeDisplayed();
+    //   await ClassesAdmin.acceptClassClick();
+    //   await expect(ClassesAdmin.deleteButtonClass).toBeDisplayed();
+    //   await ClassesAdmin.deleteClassClick();
+    // });
+});
