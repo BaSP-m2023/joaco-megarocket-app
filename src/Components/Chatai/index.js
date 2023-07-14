@@ -1,9 +1,11 @@
+import styles from './chatai.module.css';
+
 function Chatai() {
   return (
-    <div className="text-red-500">
-      <div className="text-red-500"></div>
-      <div className="text-red-500">
-        <p className="text-red-500">este es el mensaje que escribí</p>
+    <div className={styles.container}>
+      <div className={styles.oldMessages}></div>
+      <div className={styles.writeMessage}>
+        <input className={styles.text} type="text" placeholder="type your message here"></input>
       </div>
     </div>
   );
